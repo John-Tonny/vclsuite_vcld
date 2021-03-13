@@ -20,7 +20,7 @@ import (
 	_ "github.com/John-Tonny/vclsuite_vcld/database/ffldb"
 	"github.com/John-Tonny/vclsuite_vcld/txscript"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 const (
@@ -59,8 +59,8 @@ func isSupportedDbType(dbType string) bool {
 
 // loadBlocks reads files containing bitcoin block data (gzipped but otherwise
 // in the format bitcoind writes) from disk and returns them as an array of
-// btcutil.Block.  This is largely borrowed from the test code in btcdb.
-func loadBlocks(filename string) (blocks []*btcutil.Block, err error) {
+// vclutil.Block.  This is largely borrowed from the test code in btcdb.
+func loadBlocks(filename string) (blocks []*vclutil.Block, err error) {
 	filename = filepath.Join("testdata/", filename)
 
 	var network = wire.MainNet
@@ -79,7 +79,7 @@ func loadBlocks(filename string) (blocks []*btcutil.Block, err error) {
 	}
 	defer fi.Close()
 
-	var block *btcutil.Block
+	var block *vclutil.Block
 
 	err = nil
 	for height := int64(1); err == nil; height++ {
@@ -105,7 +105,7 @@ func loadBlocks(filename string) (blocks []*btcutil.Block, err error) {
 		// read block
 		dr.Read(rbytes)
 
-		block, err = btcutil.NewBlockFromBytes(rbytes)
+		block, err = vclutil.NewBlockFromBytes(rbytes)
 		if err != nil {
 			return
 		}

@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/John-Tonny/vclsuite_vcld/rpcclient"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 	"github.com/davecgh/go-spew/spew"
 )
 
@@ -21,14 +21,14 @@ func main() {
 	// for notifications.  See the documentation of the rpcclient
 	// NotificationHandlers type for more details about each handler.
 	ntfnHandlers := rpcclient.NotificationHandlers{
-		OnAccountBalance: func(account string, balance btcutil.Amount, confirmed bool) {
+		OnAccountBalance: func(account string, balance vclutil.Amount, confirmed bool) {
 			log.Printf("New balance for account %s: %v", account,
 				balance)
 		},
 	}
 
 	// Connect to local btcwallet RPC server using websockets.
-	certHomeDir := btcutil.AppDataDir("btcwallet", false)
+	certHomeDir := vclutil.AppDataDir("btcwallet", false)
 	certs, err := ioutil.ReadFile(filepath.Join(certHomeDir, "rpc.cert"))
 	if err != nil {
 		log.Fatal(err)

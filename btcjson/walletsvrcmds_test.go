@@ -12,7 +12,7 @@ import (
 	"testing"
 
 	"github.com/John-Tonny/vclsuite_vcld/btcjson"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // TestWalletSvrCmds tests all of the wallet server commands marshal and
@@ -1732,7 +1732,7 @@ func TestWalletSvrCmds(t *testing.T) {
 						},
 					},
 					[]btcjson.PsbtOutput{
-						btcjson.NewPsbtOutput("1234", btcutil.Amount(1234)),
+						btcjson.NewPsbtOutput("1234", vclutil.Amount(1234)),
 						btcjson.NewPsbtDataOutput([]byte{1, 2, 3, 4}),
 					},
 					btcjson.Uint32(1),
@@ -1750,7 +1750,7 @@ func TestWalletSvrCmds(t *testing.T) {
 						},
 					},
 					[]btcjson.PsbtOutput{
-						btcjson.NewPsbtOutput("1234", btcutil.Amount(1234)),
+						btcjson.NewPsbtOutput("1234", vclutil.Amount(1234)),
 						btcjson.NewPsbtDataOutput([]byte{1, 2, 3, 4}),
 					},
 					btcjson.Uint32(1),
@@ -1768,7 +1768,7 @@ func TestWalletSvrCmds(t *testing.T) {
 					},
 				},
 				Outputs: []btcjson.PsbtOutput{
-					btcjson.NewPsbtOutput("1234", btcutil.Amount(1234)),
+					btcjson.NewPsbtOutput("1234", vclutil.Amount(1234)),
 					btcjson.NewPsbtDataOutput([]byte{1, 2, 3, 4}),
 				},
 				Locktime:    btcjson.Uint32(1),

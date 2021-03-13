@@ -11,7 +11,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/mempool"
 	"github.com/John-Tonny/vclsuite_vcld/peer"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // PeerNotifier exposes methods to notify peers of status changes to
@@ -24,7 +24,7 @@ type PeerNotifier interface {
 
 	RelayInventory(invVect *wire.InvVect, data interface{})
 
-	TransactionConfirmed(tx *btcutil.Tx)
+	TransactionConfirmed(tx *vclutil.Tx)
 }
 
 // Config is a configuration struct used to initialize a new SyncManager.

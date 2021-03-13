@@ -18,7 +18,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/database"
 	"github.com/John-Tonny/vclsuite_vcld/database/internal/treap"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 	"github.com/btcsuite/goleveldb/leveldb"
 	"github.com/btcsuite/goleveldb/leveldb/comparer"
 	ldberrors "github.com/btcsuite/goleveldb/leveldb/errors"
@@ -1146,7 +1146,7 @@ func (tx *transaction) hasBlock(hash *chainhash.Hash) bool {
 //   - ErrTxClosed if the transaction has already been closed
 //
 // This function is part of the database.Tx interface implementation.
-func (tx *transaction) StoreBlock(block *btcutil.Block) error {
+func (tx *transaction) StoreBlock(block *vclutil.Block) error {
 	// Ensure transaction state is valid.
 	if err := tx.checkClosed(); err != nil {
 		return err

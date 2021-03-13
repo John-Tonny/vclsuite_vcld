@@ -11,7 +11,7 @@ import (
 
 	"github.com/John-Tonny/vclsuite_vcld/btcjson"
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 	"github.com/davecgh/go-spew/spew"
 )
 
@@ -126,8 +126,8 @@ func TestGetTxOutSetInfoResult(t *testing.T) {
 					return *h
 				}(),
 				DiskSize: 1,
-				TotalAmount: func() btcutil.Amount {
-					a, err := btcutil.NewAmount(0.2)
+				TotalAmount: func() vclutil.Amount {
+					a, err := vclutil.NewAmount(0.2)
 					if err != nil {
 						panic(err)
 					}

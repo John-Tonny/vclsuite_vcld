@@ -16,7 +16,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
 	"github.com/John-Tonny/vclsuite_vcld/database"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 var zeroHash = chainhash.Hash{}
@@ -94,7 +94,7 @@ func (bi *blockImporter) readBlock() ([]byte, error) {
 // with any potential errors.
 func (bi *blockImporter) processBlock(serializedBlock []byte) (bool, error) {
 	// Deserialize the block which includes checks for malformed blocks.
-	block, err := btcutil.NewBlockFromBytes(serializedBlock)
+	block, err := vclutil.NewBlockFromBytes(serializedBlock)
 	if err != nil {
 		return false, err
 	}

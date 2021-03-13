@@ -14,7 +14,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/database"
 	_ "github.com/John-Tonny/vclsuite_vcld/database/ffldb"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // This example demonstrates creating a new database.
@@ -136,7 +136,7 @@ func Example_blockStorageAndRetrieval() {
 	// and example.
 	err = db.Update(func(tx database.Tx) error {
 		genesisBlock := chaincfg.MainNetParams.GenesisBlock
-		return tx.StoreBlock(btcutil.NewBlock(genesisBlock))
+		return tx.StoreBlock(vclutil.NewBlock(genesisBlock))
 	})
 	if err != nil {
 		fmt.Println(err)

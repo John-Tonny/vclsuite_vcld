@@ -11,7 +11,7 @@ import (
 
 	"github.com/John-Tonny/vclsuite_vcld/btcjson"
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // FutureGenerateResult is a future promise to deliver the result of a
@@ -98,13 +98,13 @@ func (f FutureGenerateToAddressResult) Receive() ([]*chainhash.Hash, error) {
 // the returned instance.
 //
 // See GenerateToAddress for the blocking version and more details.
-func (c *Client) GenerateToAddressAsync(numBlocks int64, address btcutil.Address, maxTries *int64) FutureGenerateToAddressResult {
+func (c *Client) GenerateToAddressAsync(numBlocks int64, address vclutil.Address, maxTries *int64) FutureGenerateToAddressResult {
 	cmd := btcjson.NewGenerateToAddressCmd(numBlocks, address.EncodeAddress(), maxTries)
 	return c.sendCmd(cmd)
 }
 
 // GenerateToAddress generates numBlocks blocks to the given address and returns their hashes.
-func (c *Client) GenerateToAddress(numBlocks int64, address btcutil.Address, maxTries *int64) ([]*chainhash.Hash, error) {
+func (c *Client) GenerateToAddress(numBlocks int64, address vclutil.Address, maxTries *int64) ([]*chainhash.Hash, error) {
 	return c.GenerateToAddressAsync(numBlocks, address, maxTries).Receive()
 }
 
@@ -441,7 +441,7 @@ func (r FutureSubmitBlockResult) Receive() error {
 // returned instance.
 //
 // See SubmitBlock for the blocking version and more details.
-func (c *Client) SubmitBlockAsync(block *btcutil.Block, options *btcjson.SubmitBlockOptions) FutureSubmitBlockResult {
+func (c *Client) SubmitBlockAsync(block *vclutil.Block, options *btcjson.SubmitBlockOptions) FutureSubmitBlockResult {
 	blockHex := ""
 	if block != nil {
 		blockBytes, err := block.Bytes()
@@ -457,7 +457,7 @@ func (c *Client) SubmitBlockAsync(block *btcutil.Block, options *btcjson.SubmitB
 }
 
 // SubmitBlock attempts to submit a new block into the bitcoin network.
-func (c *Client) SubmitBlock(block *btcutil.Block, options *btcjson.SubmitBlockOptions) error {
+func (c *Client) SubmitBlock(block *vclutil.Block, options *btcjson.SubmitBlockOptions) error {
 	return c.SubmitBlockAsync(block, options).Receive()
 }
 

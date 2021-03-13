@@ -12,14 +12,14 @@ import (
 
 	"github.com/John-Tonny/vclsuite_vcld/txscript"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // txValidateItem holds a transaction along with which input to validate.
 type txValidateItem struct {
 	txInIndex int
 	txIn      *wire.TxIn
-	tx        *btcutil.Tx
+	tx        *vclutil.Tx
 	sigHashes *txscript.TxSigHashes
 }
 
@@ -188,7 +188,7 @@ func newTxValidator(utxoView *UtxoViewpoint, flags txscript.ScriptFlags,
 
 // ValidateTransactionScripts validates the scripts for the passed transaction
 // using multiple goroutines.
-func ValidateTransactionScripts(tx *btcutil.Tx, utxoView *UtxoViewpoint,
+func ValidateTransactionScripts(tx *vclutil.Tx, utxoView *UtxoViewpoint,
 	flags txscript.ScriptFlags, sigCache *txscript.SigCache,
 	hashCache *txscript.HashCache) error {
 
@@ -240,7 +240,7 @@ func ValidateTransactionScripts(tx *btcutil.Tx, utxoView *UtxoViewpoint,
 
 // checkBlockScripts executes and validates the scripts for all transactions in
 // the passed block using multiple goroutines.
-func checkBlockScripts(block *btcutil.Block, utxoView *UtxoViewpoint,
+func checkBlockScripts(block *vclutil.Block, utxoView *UtxoViewpoint,
 	scriptFlags txscript.ScriptFlags, sigCache *txscript.SigCache,
 	hashCache *txscript.HashCache) error {
 

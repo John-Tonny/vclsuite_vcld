@@ -20,7 +20,7 @@ import (
 	_ "github.com/John-Tonny/vclsuite_vcld/database/ffldb"
 	"github.com/John-Tonny/vclsuite_vcld/txscript"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 const (
@@ -151,7 +151,7 @@ func TestFullBlocks(t *testing.T) {
 	// specified in the test.
 	testAcceptedBlock := func(item fullblocktests.AcceptedBlock) {
 		blockHeight := item.Height
-		block := btcutil.NewBlock(item.Block)
+		block := vclutil.NewBlock(item.Block)
 		block.SetHeight(blockHeight)
 		t.Logf("Testing block %s (hash %s, height %d)",
 			item.Name, block.Hash(), blockHeight)
@@ -185,7 +185,7 @@ func TestFullBlocks(t *testing.T) {
 	// specified in the test.
 	testRejectedBlock := func(item fullblocktests.RejectedBlock) {
 		blockHeight := item.Height
-		block := btcutil.NewBlock(item.Block)
+		block := vclutil.NewBlock(item.Block)
 		block.SetHeight(blockHeight)
 		t.Logf("Testing block %s (hash %s, height %d)",
 			item.Name, block.Hash(), blockHeight)
@@ -242,7 +242,7 @@ func TestFullBlocks(t *testing.T) {
 	// orphan or rejected with a rule violation.
 	testOrphanOrRejectedBlock := func(item fullblocktests.OrphanOrRejectedBlock) {
 		blockHeight := item.Height
-		block := btcutil.NewBlock(item.Block)
+		block := vclutil.NewBlock(item.Block)
 		block.SetHeight(blockHeight)
 		t.Logf("Testing block %s (hash %s, height %d)",
 			item.Name, block.Hash(), blockHeight)
@@ -270,7 +270,7 @@ func TestFullBlocks(t *testing.T) {
 	// block specified in the provided test instance.
 	testExpectedTip := func(item fullblocktests.ExpectedTip) {
 		blockHeight := item.Height
-		block := btcutil.NewBlock(item.Block)
+		block := vclutil.NewBlock(item.Block)
 		block.SetHeight(blockHeight)
 		t.Logf("Testing tip for block %s (hash %s, height %d)",
 			item.Name, block.Hash(), blockHeight)

@@ -15,7 +15,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/btcjson"
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // FutureDebugLevelResult is a future promise to deliver the result of a
@@ -128,7 +128,7 @@ func (r FutureListAddressTransactionsResult) Receive() ([]btcjson.ListTransactio
 // See ListAddressTransactions for the blocking version and more details.
 //
 // NOTE: This is a btcd extension.
-func (c *Client) ListAddressTransactionsAsync(addresses []btcutil.Address, account string) FutureListAddressTransactionsResult {
+func (c *Client) ListAddressTransactionsAsync(addresses []vclutil.Address, account string) FutureListAddressTransactionsResult {
 	// Convert addresses to strings.
 	addrs := make([]string, 0, len(addresses))
 	for _, addr := range addresses {
@@ -142,7 +142,7 @@ func (c *Client) ListAddressTransactionsAsync(addresses []btcutil.Address, accou
 // with the provided addresses.
 //
 // NOTE: This is a btcwallet extension.
-func (c *Client) ListAddressTransactions(addresses []btcutil.Address, account string) ([]btcjson.ListTransactionsResult, error) {
+func (c *Client) ListAddressTransactions(addresses []vclutil.Address, account string) ([]btcjson.ListTransactionsResult, error) {
 	return c.ListAddressTransactionsAsync(addresses, account).Receive()
 }
 

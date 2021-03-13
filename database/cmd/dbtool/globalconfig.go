@@ -14,11 +14,11 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/database"
 	_ "github.com/John-Tonny/vclsuite_vcld/database/ffldb"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 var (
-	btcdHomeDir     = btcutil.AppDataDir("vcld", false)
+	btcdHomeDir     = vclutil.AppDataDir("vcld", false)
 	knownDbTypes    = database.SupportedDrivers()
 	activeNetParams = &chaincfg.MainNetParams
 

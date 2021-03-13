@@ -11,7 +11,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/blockchain"
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // newHashFromStr converts the passed big-endian hex string into a
@@ -49,7 +49,7 @@ func newUtxoViewpoint(sourceTxns []*wire.MsgTx, sourceTxHeights []int32) *blockc
 
 	view := blockchain.NewUtxoViewpoint()
 	for i, tx := range sourceTxns {
-		view.AddTxOuts(btcutil.NewTx(tx), sourceTxHeights[i])
+		view.AddTxOuts(vclutil.NewTx(tx), sourceTxHeights[i])
 	}
 	return view
 }

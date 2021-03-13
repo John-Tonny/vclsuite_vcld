@@ -10,7 +10,7 @@ import (
 
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
 	"github.com/John-Tonny/vclsuite_vcld/database"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // BehaviorFlags is a bitmask defining tweaks to the normal behavior when
@@ -139,7 +139,7 @@ func (b *BlockChain) processOrphans(hash *chainhash.Hash, flags BehaviorFlags) e
 // whether or not the block is an orphan.
 //
 // This function is safe for concurrent access.
-func (b *BlockChain) ProcessBlock(block *btcutil.Block, flags BehaviorFlags) (bool, bool, error) {
+func (b *BlockChain) ProcessBlock(block *vclutil.Block, flags BehaviorFlags) (bool, bool, error) {
 	b.chainLock.Lock()
 	defer b.chainLock.Unlock()
 

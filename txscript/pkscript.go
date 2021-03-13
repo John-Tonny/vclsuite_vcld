@@ -8,7 +8,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/btcec"
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 	"golang.org/x/crypto/ripemd160"
 )
 
@@ -141,7 +141,7 @@ func (s PkScript) Script() []byte {
 }
 
 // Address encodes the script into an address for the given chain.
-func (s PkScript) Address(chainParams *chaincfg.Params) (btcutil.Address, error) {
+func (s PkScript) Address(chainParams *chaincfg.Params) (vclutil.Address, error) {
 	_, addrs, _, err := ExtractPkScriptAddrs(s.Script(), chainParams)
 	if err != nil {
 		return nil, fmt.Errorf("unable to parse address: %v", err)

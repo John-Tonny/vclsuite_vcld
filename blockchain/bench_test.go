@@ -7,13 +7,13 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // BenchmarkIsCoinBase performs a simple benchmark against the IsCoinBase
 // function.
 func BenchmarkIsCoinBase(b *testing.B) {
-	tx, _ := btcutil.NewBlock(&Block100000).Tx(1)
+	tx, _ := vclutil.NewBlock(&Block100000).Tx(1)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		IsCoinBase(tx)

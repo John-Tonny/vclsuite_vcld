@@ -12,7 +12,7 @@ import (
 
 	"github.com/John-Tonny/vclsuite_vcld/rpcclient"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 func main() {
@@ -21,7 +21,7 @@ func main() {
 	// for notifications.  See the documentation of the rpcclient
 	// NotificationHandlers type for more details about each handler.
 	ntfnHandlers := rpcclient.NotificationHandlers{
-		OnFilteredBlockConnected: func(height int32, header *wire.BlockHeader, txns []*btcutil.Tx) {
+		OnFilteredBlockConnected: func(height int32, header *wire.BlockHeader, txns []*vclutil.Tx) {
 			log.Printf("Block connected: %v (%d) %v",
 				header.BlockHash(), height, header.Timestamp)
 		},
@@ -32,7 +32,7 @@ func main() {
 	}
 
 	// Connect to local vcld RPC server using websockets.
-	btcdHomeDir := btcutil.AppDataDir("vcld", false)
+	btcdHomeDir := vclutil.AppDataDir("vcld", false)
 	certs, err := ioutil.ReadFile(filepath.Join(btcdHomeDir, "rpc.cert"))
 	if err != nil {
 		log.Fatal(err)

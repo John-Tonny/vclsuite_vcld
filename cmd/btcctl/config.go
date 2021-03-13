@@ -15,7 +15,7 @@ import (
 
 	"github.com/John-Tonny/vclsuite_vcld/btcjson"
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 	flags "github.com/jessevdk/go-flags"
 )
 
@@ -27,9 +27,9 @@ const (
 )
 
 var (
-	btcdHomeDir           = btcutil.AppDataDir("vcld", false)
-	btcctlHomeDir         = btcutil.AppDataDir("vclctl", false)
-	btcwalletHomeDir      = btcutil.AppDataDir("vclwallet", false)
+	btcdHomeDir           = vclutil.AppDataDir("vcld", false)
+	btcctlHomeDir         = vclutil.AppDataDir("vclctl", false)
+	btcwalletHomeDir      = vclutil.AppDataDir("vclwallet", false)
 	defaultConfigFile     = filepath.Join(btcctlHomeDir, "vclctl.conf")
 	defaultRPCServer      = "localhost"
 	defaultRPCCertFile    = filepath.Join(btcdHomeDir, "rpc.cert")

@@ -14,7 +14,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
 	"github.com/John-Tonny/vclsuite_vcld/database"
 	_ "github.com/John-Tonny/vclsuite_vcld/database/ffldb"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // This example demonstrates how to create a new chain instance and use
@@ -58,7 +58,7 @@ func ExampleBlockChain_ProcessBlock() {
 	// Process a block.  For this example, we are going to intentionally
 	// cause an error by trying to process the genesis block which already
 	// exists.
-	genesisBlock := btcutil.NewBlock(chaincfg.MainNetParams.GenesisBlock)
+	genesisBlock := vclutil.NewBlock(chaincfg.MainNetParams.GenesisBlock)
 	isMainChain, isOrphan, err := chain.ProcessBlock(genesisBlock,
 		blockchain.BFNone)
 	if err != nil {

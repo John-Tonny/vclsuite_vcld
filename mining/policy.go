@@ -7,7 +7,7 @@ package mining
 import (
 	"github.com/John-Tonny/vclsuite_vcld/blockchain"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 const (
@@ -44,7 +44,7 @@ type Policy struct {
 	// TxMinFreeFee is the minimum fee in Satoshi/1000 bytes that is
 	// required for a transaction to be treated as free for mining purposes
 	// (block template generation).
-	TxMinFreeFee btcutil.Amount
+	TxMinFreeFee vclutil.Amount
 }
 
 // minInt is a helper function to return the minimum of two ints.  This avoids

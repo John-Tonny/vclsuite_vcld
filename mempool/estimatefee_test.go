@@ -12,7 +12,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
 	"github.com/John-Tonny/vclsuite_vcld/mining"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // newTestFeeEstimator creates a feeEstimator with some different parameters
@@ -46,11 +46,11 @@ type estimateFeeTester struct {
 	last    *lastBlock
 }
 
-func (eft *estimateFeeTester) testTx(fee btcutil.Amount) *TxDesc {
+func (eft *estimateFeeTester) testTx(fee vclutil.Amount) *TxDesc {
 	eft.version++
 	return &TxDesc{
 		TxDesc: mining.TxDesc{
-			Tx: btcutil.NewTx(&wire.MsgTx{
+			Tx: vclutil.NewTx(&wire.MsgTx{
 				Version: eft.version,
 			}),
 			Height: eft.height,
@@ -70,7 +70,7 @@ func expectedFeePerKilobyte(t *TxDesc) BtcPerKilobyte {
 func (eft *estimateFeeTester) newBlock(txs []*wire.MsgTx) {
 	eft.height++
 
-	block := btcutil.NewBlock(&wire.MsgBlock{
+	block := vclutil.NewBlock(&wire.MsgBlock{
 		Transactions: txs,
 	})
 	block.SetHeight(eft.height)
@@ -283,7 +283,7 @@ func (eft *estimateFeeTester) round(txHistory [][]*TxDesc,
 	// generate new txs.
 	var newTxs []*TxDesc
 	for i := uint32(0); i < txPerRound; i++ {
-		newTx := eft.testTx(btcutil.Amount(rand.Intn(1000000)))
+		newTx := eft.testTx(vclutil.Amount(rand.Intn(1000000)))
 		eft.ef.ObserveTransaction(newTx)
 		newTxs = append(newTxs, newTx)
 	}

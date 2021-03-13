@@ -13,7 +13,7 @@ import (
 	"github.com/John-Tonny/vclsuite_vcld/netsync"
 	"github.com/John-Tonny/vclsuite_vcld/peer"
 	"github.com/John-Tonny/vclsuite_vcld/wire"
-	"github.com/btcsuite/btcutil"
+	vclutil "github.com/John-Tonny/vclsuite_vclutil"
 )
 
 // rpcPeer provides a peer for use with the RPC server and implements the
@@ -256,7 +256,7 @@ func (b *rpcSyncMgr) IsCurrent() bool {
 //
 // This function is safe for concurrent access and is part of the
 // rpcserverSyncManager interface implementation.
-func (b *rpcSyncMgr) SubmitBlock(block *btcutil.Block, flags blockchain.BehaviorFlags) (bool, error) {
+func (b *rpcSyncMgr) SubmitBlock(block *vclutil.Block, flags blockchain.BehaviorFlags) (bool, error) {
 	return b.syncMgr.ProcessBlock(block, flags)
 }
 
