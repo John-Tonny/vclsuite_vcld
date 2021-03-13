@@ -14,7 +14,7 @@ import (
 	"runtime"
 	"time"
 
-	rpc "github.com/btcsuite/btcd/rpcclient"
+	rpc "github.com/John-Tonny/vclsuite_vcld/rpcclient"
 	"github.com/btcsuite/btcutil"
 )
 
@@ -51,7 +51,7 @@ func newConfig(prefix, certFile, keyFile string, extra []string,
 		var err error
 		btcdPath, err = btcdExecutablePath()
 		if err != nil {
-			btcdPath = "btcd"
+			btcdPath = "vcld"
 		}
 	}
 

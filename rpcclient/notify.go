@@ -13,9 +13,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/btcsuite/btcd/btcjson"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/John-Tonny/vclsuite_vcld/btcjson"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
+	"github.com/John-Tonny/vclsuite_vcld/wire"
 	"github.com/btcsuite/btcutil"
 )
 
@@ -419,7 +419,7 @@ func (c *Client) handleNotification(ntfn *rawNotification) {
 
 		connected, err := parseBtcdConnectedNtfnParams(ntfn.Params)
 		if err != nil {
-			log.Warnf("Received invalid btcd connected "+
+			log.Warnf("Received invalid vcld connected "+
 				"notification: %v", err)
 			return
 		}

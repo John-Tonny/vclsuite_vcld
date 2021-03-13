@@ -7,11 +7,11 @@ package indexers
 import (
 	"errors"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/John-Tonny/vclsuite_vcld/blockchain"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
+	"github.com/John-Tonny/vclsuite_vcld/database"
+	"github.com/John-Tonny/vclsuite_vcld/wire"
 	"github.com/btcsuite/btcutil"
 	"github.com/btcsuite/btcutil/gcs"
 	"github.com/btcsuite/btcutil/gcs/builder"

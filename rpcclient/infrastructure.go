@@ -25,8 +25,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/btcjson"
-	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/John-Tonny/vclsuite_vcld/btcjson"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
 	"github.com/btcsuite/go-socks/socks"
 	"github.com/btcsuite/websocket"
 )
@@ -1582,13 +1582,13 @@ func (c *Client) BackendVersion() (BackendVersion, error) {
 
 	// We'll start by calling GetInfo. This method doesn't exist for
 	// bitcoind nodes as of v0.16.0, so we'll assume the client is connected
-	// to a btcd backend if it does exist.
+	// to a vcld backend if it does exist.
 	info, err := c.GetInfo()
 
 	switch err := err.(type) {
-	// Parse the btcd version and cache it.
+	// Parse the vcld version and cache it.
 	case nil:
-		log.Debugf("Detected btcd version: %v", info.Version)
+		log.Debugf("Detected vcld version: %v", info.Version)
 		version := Btcd
 		c.backendVersion = &version
 		return *c.backendVersion, nil
@@ -1597,12 +1597,12 @@ func (c *Client) BackendVersion() (BackendVersion, error) {
 	// we actually ran into an error.
 	case *btcjson.RPCError:
 		if err.Code != btcjson.ErrRPCMethodNotFound.Code {
-			return 0, fmt.Errorf("unable to detect btcd version: "+
+			return 0, fmt.Errorf("unable to detect vcld version: "+
 				"%v", err)
 		}
 
 	default:
-		return 0, fmt.Errorf("unable to detect btcd version: %v", err)
+		return 0, fmt.Errorf("unable to detect vcld version: %v", err)
 	}
 
 	// Since the GetInfo method was not found, we assume the client is

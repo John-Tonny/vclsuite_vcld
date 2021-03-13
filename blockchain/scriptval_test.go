@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/btcsuite/btcd/txscript"
+	"github.com/John-Tonny/vclsuite_vcld/txscript"
 )
 
 // TestCheckBlockScripts ensures that validating the all of the scripts in a

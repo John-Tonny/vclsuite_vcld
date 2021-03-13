@@ -9,10 +9,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/database"
-	_ "github.com/btcsuite/btcd/database/ffldb"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
+	"github.com/John-Tonny/vclsuite_vcld/database"
+	_ "github.com/John-Tonny/vclsuite_vcld/database/ffldb"
+	"github.com/John-Tonny/vclsuite_vcld/wire"
 	"github.com/btcsuite/btcutil"
 	flags "github.com/jessevdk/go-flags"
 )
@@ -24,7 +24,7 @@ const (
 )
 
 var (
-	btcdHomeDir     = btcutil.AppDataDir("btcd", false)
+	btcdHomeDir     = btcutil.AppDataDir("vcld", false)
 	defaultDataDir  = filepath.Join(btcdHomeDir, "data")
 	knownDbTypes    = database.SupportedDrivers()
 	activeNetParams = &chaincfg.MainNetParams

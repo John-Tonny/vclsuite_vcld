@@ -20,25 +20,25 @@ import (
 	"strings"
 	"time"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/connmgr"
-	"github.com/btcsuite/btcd/database"
-	_ "github.com/btcsuite/btcd/database/ffldb"
-	"github.com/btcsuite/btcd/mempool"
-	"github.com/btcsuite/btcd/peer"
+	"github.com/John-Tonny/vclsuite_vcld/blockchain"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
+	"github.com/John-Tonny/vclsuite_vcld/connmgr"
+	"github.com/John-Tonny/vclsuite_vcld/database"
+	_ "github.com/John-Tonny/vclsuite_vcld/database/ffldb"
+	"github.com/John-Tonny/vclsuite_vcld/mempool"
+	"github.com/John-Tonny/vclsuite_vcld/peer"
 	"github.com/btcsuite/btcutil"
 	"github.com/btcsuite/go-socks/socks"
 	flags "github.com/jessevdk/go-flags"
 )
 
 const (
-	defaultConfigFilename        = "btcd.conf"
+	defaultConfigFilename        = "vcld.conf"
 	defaultDataDirname           = "data"
 	defaultLogLevel              = "info"
 	defaultLogDirname            = "logs"
-	defaultLogFilename           = "btcd.log"
+	defaultLogFilename           = "vcld.log"
 	defaultMaxPeers              = 125
 	defaultBanDuration           = time.Hour * 24
 	defaultBanThreshold          = 100
@@ -61,13 +61,13 @@ const (
 	defaultMaxOrphanTransactions = 100
 	defaultMaxOrphanTxSize       = 100000
 	defaultSigCacheMaxSize       = 100000
-	sampleConfigFilename         = "sample-btcd.conf"
+	sampleConfigFilename         = "sample-vcld.conf"
 	defaultTxIndex               = false
 	defaultAddrIndex             = false
 )
 
 var (
-	defaultHomeDir     = btcutil.AppDataDir("btcd", false)
+	defaultHomeDir     = btcutil.AppDataDir("vcld", false)
 	defaultConfigFile  = filepath.Join(defaultHomeDir, defaultConfigFilename)
 	defaultDataDir     = filepath.Join(defaultHomeDir, defaultDataDirname)
 	knownDbTypes       = database.SupportedDrivers()
@@ -89,15 +89,15 @@ func minUint32(a, b uint32) uint32 {
 	return b
 }
 
-// config defines the configuration options for btcd.
+// config defines the configuration options for vcld.
 //
 // See loadConfig for details on the configuration load process.
 type config struct {
 	AddCheckpoints       []string      `long:"addcheckpoint" description:"Add a custom checkpoint.  Format: '<height>:<hash>'"`
 	AddPeers             []string      `short:"a" long:"addpeer" description:"Add a peer to connect with at startup"`
 	AddrIndex            bool          `long:"addrindex" description:"Maintain a full address-based transaction index which makes the searchrawtransactions RPC available"`
-	AgentBlacklist       []string      `long:"agentblacklist" description:"A comma separated list of user-agent substrings which will cause btcd to reject any peers whose user-agent contains any of the blacklisted substrings."`
-	AgentWhitelist       []string      `long:"agentwhitelist" description:"A comma separated list of user-agent substrings which will cause btcd to require all peers' user-agents to contain one of the whitelisted substrings. The blacklist is applied before the blacklist, and an empty whitelist will allow all agents that do not fail the blacklist."`
+	AgentBlacklist       []string      `long:"agentblacklist" description:"A comma separated list of user-agent substrings which will cause vcld to reject any peers whose user-agent contains any of the blacklisted substrings."`
+	AgentWhitelist       []string      `long:"agentwhitelist" description:"A comma separated list of user-agent substrings which will cause vcld to require all peers' user-agents to contain one of the whitelisted substrings. The blacklist is applied before the blacklist, and an empty whitelist will allow all agents that do not fail the blacklist."`
 	BanDuration          time.Duration `long:"banduration" description:"How long to ban misbehaving peers.  Valid time units are {s, m, h}.  Minimum 1 second"`
 	BanThreshold         uint32        `long:"banthreshold" description:"Maximum allowed ban score before disconnecting and banning misbehaving peers."`
 	BlockMaxSize         uint32        `long:"blockmaxsize" description:"Maximum block size in bytes to be used when creating a block"`
@@ -401,7 +401,7 @@ func newConfigParser(cfg *config, so *serviceOptions, options flags.Options) *fl
 // 	3) Load configuration file overwriting defaults with any specified options
 // 	4) Parse CLI options and overwrite/add any specified options
 //
-// The above results in btcd functioning properly without any config settings
+// The above results in vcld functioning properly without any config settings
 // while still allowing the user to override settings with config files and
 // command line options.  Command line options always take precedence.
 func loadConfig() (*config, []string, error) {
@@ -1090,7 +1090,7 @@ func loadConfig() (*config, []string, error) {
 	return &cfg, remainingArgs, nil
 }
 
-// createDefaultConfig copies the file sample-btcd.conf to the given destination path,
+// createDefaultConfig copies the file sample-vcld.conf to the given destination path,
 // and populates it with some randomly generated RPC username and password.
 func createDefaultConfigFile(destinationPath string) error {
 	// Create the destination directory if it does not exists

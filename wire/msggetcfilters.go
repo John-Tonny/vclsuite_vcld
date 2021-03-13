@@ -7,7 +7,7 @@ package wire
 import (
 	"io"
 
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
 )
 
 // MaxGetCFiltersReqRange the maximum number of filters that may be requested in

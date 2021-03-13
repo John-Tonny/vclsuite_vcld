@@ -22,20 +22,20 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/addrmgr"
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/blockchain/indexers"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/connmgr"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/mempool"
-	"github.com/btcsuite/btcd/mining"
-	"github.com/btcsuite/btcd/mining/cpuminer"
-	"github.com/btcsuite/btcd/netsync"
-	"github.com/btcsuite/btcd/peer"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/John-Tonny/vclsuite_vcld/addrmgr"
+	"github.com/John-Tonny/vclsuite_vcld/blockchain"
+	"github.com/John-Tonny/vclsuite_vcld/blockchain/indexers"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
+	"github.com/John-Tonny/vclsuite_vcld/connmgr"
+	"github.com/John-Tonny/vclsuite_vcld/database"
+	"github.com/John-Tonny/vclsuite_vcld/mempool"
+	"github.com/John-Tonny/vclsuite_vcld/mining"
+	"github.com/John-Tonny/vclsuite_vcld/mining/cpuminer"
+	"github.com/John-Tonny/vclsuite_vcld/netsync"
+	"github.com/John-Tonny/vclsuite_vcld/peer"
+	"github.com/John-Tonny/vclsuite_vcld/txscript"
+	"github.com/John-Tonny/vclsuite_vcld/wire"
 	"github.com/btcsuite/btcutil"
 	"github.com/btcsuite/btcutil/bloom"
 )
@@ -61,8 +61,8 @@ const (
 
 var (
 	// userAgentName is the user agent name and is used to help identify
-	// ourselves to other bitcoin peers.
-	userAgentName = "btcd"
+	// ourselves to other vircles peers.
+	userAgentName = "vcld"
 
 	// userAgentVersion is the user agent version and is used to help
 	// identify ourselves to other bitcoin peers.

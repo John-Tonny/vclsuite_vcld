@@ -11,8 +11,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/John-Tonny/vclsuite_vcld/database"
+	"github.com/John-Tonny/vclsuite_vcld/wire"
 )
 
 // TestErrNotInMainChain ensures the functions related to errNotInMainChain work

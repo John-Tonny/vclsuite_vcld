@@ -16,10 +16,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/rpcclient"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
+	"github.com/John-Tonny/vclsuite_vcld/rpcclient"
+	"github.com/John-Tonny/vclsuite_vcld/wire"
 	"github.com/btcsuite/btcutil"
 )
 
@@ -531,7 +531,7 @@ func generateListeningAddresses() (string, string) {
 
 // baseDir is the directory path of the temp directory for all rpctest files.
 func baseDir() (string, error) {
-	dirPath := filepath.Join(os.TempDir(), "btcd", "rpctest")
+	dirPath := filepath.Join(os.TempDir(), "vcld", "rpctest")
 	err := os.MkdirAll(dirPath, 0755)
 	return dirPath, err
 }

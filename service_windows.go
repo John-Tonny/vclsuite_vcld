@@ -16,23 +16,23 @@ import (
 )
 
 const (
-	// svcName is the name of btcd service.
-	svcName = "btcdsvc"
+	// svcName is the name of vcld service.
+	svcName = "vcldsvc"
 
 	// svcDisplayName is the service name that will be shown in the windows
 	// services list.  Not the svcName is the "real" name which is used
 	// to control the service.  This is only for display purposes.
-	svcDisplayName = "Btcd Service"
+	svcDisplayName = "Vcld Service"
 
 	// svcDesc is the description of the service.
-	svcDesc = "Downloads and stays synchronized with the bitcoin block " +
+	svcDesc = "Downloads and stays synchronized with the vircles block " +
 		"chain and provides chain services to applications."
 )
 
 // elog is used to send messages to the Windows event log.
 var elog *eventlog.Log
 
-// logServiceStartOfDay logs information about btcd when the main server has
+// logServiceStartOfDay logs information about vcld when the main server has
 // been started to the Windows event log.
 func logServiceStartOfDay(srvr *server) {
 	var message string

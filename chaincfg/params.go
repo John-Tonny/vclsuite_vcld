@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/John-Tonny/vclsuite_vcld/chaincfg/chainhash"
+	"github.com/John-Tonny/vclsuite_vcld/wire"
 )
 
 // These variables are the chain proof-of-work limit parameters for each default
@@ -225,14 +225,11 @@ type Params struct {
 var MainNetParams = Params{
 	Name:        "mainnet",
 	Net:         wire.MainNet,
-	DefaultPort: "8333",
+	DefaultPort: "9900",
 	DNSSeeds: []DNSSeed{
-		{"seed.bitcoin.sipa.be", true},
-		{"dnsseed.bluematt.me", true},
-		{"dnsseed.bitcoin.dashjr.org", false},
-		{"seed.bitcoinstats.com", true},
-		{"seed.bitnodes.io", false},
-		{"seed.bitcoin.jonasschnelli.ch", true},
+		{"52.83.40.78", true},
+		{"52.82.4.7", true},
+		{"52.83.45.206", true},
 	},
 
 	// Chain parameters
@@ -313,7 +310,7 @@ var MainNetParams = Params{
 	Bech32HRPSegwit: "bc", // always bc for main net
 
 	// Address encoding magics
-	PubKeyHashAddrID:        0x00, // starts with 1
+	PubKeyHashAddrID:        0x3F, // starts with 1
 	ScriptHashAddrID:        0x05, // starts with 3
 	PrivateKeyID:            0x80, // starts with 5 (uncompressed) or K (compressed)
 	WitnessPubKeyHashAddrID: 0x06, // starts with p2
