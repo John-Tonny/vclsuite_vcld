@@ -286,6 +286,7 @@ func loadBlockDB() (database.DB, error) {
 		if err != nil {
 			return nil, err
 		}
+		fmt.Print("%s-%s-%s", cfg.DbType, dbPath, activeNetParams.Net)
 		db, err = database.Create(cfg.DbType, dbPath, activeNetParams.Net)
 		if err != nil {
 			return nil, err
