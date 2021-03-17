@@ -158,6 +158,8 @@ type Params struct {
 	// block.
 	TargetTimePerBlock time.Duration
 
+	BridgeStartBlock int32 // john
+
 	// RetargetAdjustmentFactor is the adjustment factor used to limit
 	// the minimum and maximum amount of adjustment that can occur between
 	// difficulty retargets.
@@ -242,10 +244,11 @@ var MainNetParams = Params{
 	BIP0065Height:            388381,     // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
 	BIP0066Height:            363725,     // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
 	CoinbaseMaturity:         100,
-	SubsidyReductionInterval: 210000,
+	SubsidyReductionInterval: 525600,
 	TargetTimespan:           time.Hour * 6,   // 6 hours
 	TargetTimePerBlock:       time.Minute * 1, // 1 minutes
 	RetargetAdjustmentFactor: 4,               // 25% less, 400% more
+	BridgeStartBlock:         348000,          // john
 	ReduceMinDifficulty:      false,
 	MinDiffReductionTime:     0,
 	GenerateSupported:        false,
@@ -326,6 +329,7 @@ var RegressionNetParams = Params{
 	TargetTimespan:           time.Hour * 24 * 14, // 14 days
 	TargetTimePerBlock:       time.Minute * 10,    // 10 minutes
 	RetargetAdjustmentFactor: 4,                   // 25% less, 400% more
+	BridgeStartBlock:         100,                 // john
 	ReduceMinDifficulty:      true,
 	MinDiffReductionTime:     time.Minute * 20, // TargetTimePerBlock * 2
 	GenerateSupported:        true,
@@ -405,6 +409,7 @@ var TestNet3Params = Params{
 	TargetTimespan:           time.Hour * 24 * 14, // 14 days
 	TargetTimePerBlock:       time.Minute * 10,    // 10 minutes
 	RetargetAdjustmentFactor: 4,                   // 25% less, 400% more
+	BridgeStartBlock:         1000,                // john
 	ReduceMinDifficulty:      true,
 	MinDiffReductionTime:     time.Minute * 20, // TargetTimePerBlock * 2
 	GenerateSupported:        false,

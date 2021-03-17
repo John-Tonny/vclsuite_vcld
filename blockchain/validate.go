@@ -52,12 +52,11 @@ var (
 	// block91842Hash is one of the two nodes which violate the rules
 	// set forth in BIP0030.  It is defined as a package level variable to
 	// avoid the need to create a new instance every time a check is needed.
-	block91842Hash = newHashFromStr("00000000000a4d0a398161ffc163c503763b1f4360639393e0e4c8e300e0caec")
-
+	block91842Hash = newHashFromStr("0000000563202cd5cac4c18911d34dce2acf3534a9dd20cecb01061382be276d") // john
 	// block91880Hash is one of the two nodes which violate the rules
 	// set forth in BIP0030.  It is defined as a package level variable to
 	// avoid the need to create a new instance every time a check is needed.
-	block91880Hash = newHashFromStr("00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721")
+	block91880Hash = newHashFromStr("0000000755e5673208f81cb8c1f9cd2057f4ed255f3e1bfff85d7a2a4717b205") // john
 )
 
 // isNullOutpoint determines whether or not a previous transaction output point
@@ -197,7 +196,36 @@ func CalcBlockSubsidy(height int32, chainParams *chaincfg.Params) int64 {
 	}
 
 	// Equivalent to: baseSubsidy / 2^(height/subsidyHalvingInterval)
-	return baseSubsidy >> uint(height/chainParams.SubsidyReductionInterval)
+	// return baseSubsidy >> uint(height/chainParams.SubsidyReductionInterval)
+
+	// john
+	if height == 0 {
+		return baseSubsidy
+	}
+	if height == 1 {
+		return 3500001 * vclutil.SatoshiPerBitcoin
+	}
+
+	reductions := int(height / chainParams.SubsidyReductionInterval)
+	if reductions >= 50 {
+		return 0
+	}
+
+	// Subsidy reduced every 525600 blocks which will occur approximately every year.
+	// yearly decline of production by half per year, projected ~888M coins max by year 2067+.
+	subsidy := int64(63.5 * vclutil.SatoshiPerBitcoin)
+	for i := 0; i < reductions; i++ {
+		subsidy -= subsidy / 2
+	}
+
+	twoFundReward := int64(0)
+	if reductions == 0 {
+		twoFundReward = int64(1500*10000) * int64(vclutil.SatoshiPerBitcoin) / int64(chainParams.SubsidyReductionInterval)
+	} else if reductions < 3 {
+		twoFundReward = int64(750*10000) * int64(vclutil.SatoshiPerBitcoin) / int64(chainParams.SubsidyReductionInterval)
+
+	}
+	return subsidy + twoFundReward
 }
 
 // CheckTransactionSanity performs some preliminary checks on a transaction to

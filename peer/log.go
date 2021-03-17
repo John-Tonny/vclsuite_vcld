@@ -99,6 +99,20 @@ func invSummary(invList []*wire.InvVect) string {
 			return fmt.Sprintf("witness tx %s", iv.Hash)
 		case wire.InvTypeTx:
 			return fmt.Sprintf("tx %s", iv.Hash)
+		case wire.InvTypeMasternodePaymentVote:
+			return fmt.Sprintf("masternodePaymentVote %s", iv.Hash)
+		case wire.InvTypeMasternodePaymentBlock:
+			return fmt.Sprintf("masternodePaymentBlock %s", iv.Hash)
+		case wire.InvTypeMasternodeAnnounce:
+			return fmt.Sprintf("masternodeAnnounce %s", iv.Hash)
+		case wire.InvTypeMasternodePing:
+			return fmt.Sprintf("masternodePing %s", iv.Hash)
+		case wire.InvTypeMasternodeObject:
+			return fmt.Sprintf("masternodeObject %s", iv.Hash)
+		case wire.InvTypeMasternodeObjectVote:
+			return fmt.Sprintf("masternodeObjectVote %s", iv.Hash)
+		case wire.InvTypeMasternodeVerify:
+			return fmt.Sprintf("masternodeVerify %s", iv.Hash)
 		}
 
 		return fmt.Sprintf("unknown (%d) %s", uint32(iv.Type), iv.Hash)

@@ -262,10 +262,21 @@ func (b *BlockChain) calcNextRequiredDifficulty(lastNode *blockNode, newBlockTim
 	// difficulty.
 	actualTimespan := lastNode.timestamp - firstNode.timestamp
 	adjustedTimespan := actualTimespan
-	if actualTimespan < b.minRetargetTimespan {
-		adjustedTimespan = b.minRetargetTimespan
-	} else if actualTimespan > b.maxRetargetTimespan {
-		adjustedTimespan = b.maxRetargetTimespan
+	/// john
+	params := b.chainParams
+	if lastNode.height >= params.BridgeStartBlock {
+		if adjustedTimespan < 17280 { // params.nPowTargetTimespan * (8/10)
+			adjustedTimespan = 17280
+		}
+		if adjustedTimespan > 27000 { // params.nPowTargetTimespan * (10/8)
+			adjustedTimespan = 27000
+		}
+	} else {
+		if actualTimespan < b.minRetargetTimespan {
+			adjustedTimespan = b.minRetargetTimespan
+		} else if actualTimespan > b.maxRetargetTimespan {
+			adjustedTimespan = b.maxRetargetTimespan
+		}
 	}
 
 	// Calculate new target difficulty as:

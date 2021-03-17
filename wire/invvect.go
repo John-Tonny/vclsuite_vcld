@@ -29,24 +29,38 @@ type InvType uint32
 
 // These constants define the various supported inventory vector types.
 const (
-	InvTypeError                InvType = 0
-	InvTypeTx                   InvType = 1
-	InvTypeBlock                InvType = 2
-	InvTypeFilteredBlock        InvType = 3
-	InvTypeWitnessBlock         InvType = InvTypeBlock | InvWitnessFlag
-	InvTypeWitnessTx            InvType = InvTypeTx | InvWitnessFlag
-	InvTypeFilteredWitnessBlock InvType = InvTypeFilteredBlock | InvWitnessFlag
+	InvTypeError                  InvType = 0
+	InvTypeTx                     InvType = 1
+	InvTypeBlock                  InvType = 2
+	InvTypeFilteredBlock          InvType = 3
+	InvTypeWitnessBlock           InvType = InvTypeBlock | InvWitnessFlag
+	InvTypeWitnessTx              InvType = InvTypeTx | InvWitnessFlag
+	InvTypeFilteredWitnessBlock   InvType = InvTypeFilteredBlock | InvWitnessFlag
+	InvTypeMasternodePaymentVote  InvType = 7
+	InvTypeMasternodePaymentBlock InvType = 8
+	InvTypeMasternodeAnnounce     InvType = 10
+	InvTypeMasternodePing         InvType = 11
+	InvTypeMasternodeObject       InvType = 12
+	InvTypeMasternodeObjectVote   InvType = 13
+	InvTypeMasternodeVerify       InvType = 14
 )
 
 // Map of service flags back to their constant names for pretty printing.
 var ivStrings = map[InvType]string{
-	InvTypeError:                "ERROR",
-	InvTypeTx:                   "MSG_TX",
-	InvTypeBlock:                "MSG_BLOCK",
-	InvTypeFilteredBlock:        "MSG_FILTERED_BLOCK",
-	InvTypeWitnessBlock:         "MSG_WITNESS_BLOCK",
-	InvTypeWitnessTx:            "MSG_WITNESS_TX",
-	InvTypeFilteredWitnessBlock: "MSG_FILTERED_WITNESS_BLOCK",
+	InvTypeError:                  "ERROR",
+	InvTypeTx:                     "MSG_TX",
+	InvTypeBlock:                  "MSG_BLOCK",
+	InvTypeFilteredBlock:          "MSG_FILTERED_BLOCK",
+	InvTypeWitnessBlock:           "MSG_WITNESS_BLOCK",
+	InvTypeWitnessTx:              "MSG_WITNESS_TX",
+	InvTypeFilteredWitnessBlock:   "MSG_FILTERED_WITNESS_BLOCK",
+	InvTypeMasternodePaymentVote:  "MSG_MASTERNODE_PAYMENT_VOTE",
+	InvTypeMasternodePaymentBlock: "MSG_MASTERNODE_PAYMENT_BLOCK",
+	InvTypeMasternodeAnnounce:     "MSG_MASTERNODE_ANNOUNCE",
+	InvTypeMasternodePing:         "MSG_MASTERNODE_PING",
+	InvTypeMasternodeObject:       "MSG_GOVERNANCE_OBJECT",
+	InvTypeMasternodeObjectVote:   "MSG_GOVERNANCE_OBJECT_VOTE",
+	InvTypeMasternodeVerify:       "MSG_MASTERNODE_VERIFY",
 }
 
 // String returns the InvType in human-readable form.
